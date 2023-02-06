@@ -33,6 +33,7 @@ body {
     display: flex;
     flex-direction: column;
     background-color: var(--vk-dark-color);
+    font-family: 'Encode Sans Condensed', sans-serif;
 }
 
 code {
@@ -54,7 +55,7 @@ footer {
 /*START: Navbar Overrides  */
 
 .navbar-brand {
-    color: var(--vk-secondary-color);
+    color: var(--vk-dark-color);
 }
 
 #mainNav {
