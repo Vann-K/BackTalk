@@ -74,16 +74,39 @@
             <div class="col col-12 col-md-8">
                 <pre class="line-numbers">
                     <code class="language-js">
-                        function displayMessage() {
-                            let msg = document.getElementById('message').value;
+                        // Entry Point aka controller
+                        <a href="#getValuesSection" class="text-decoration-none" id="getValuesCode">function getValues()</a> 
+                        {
+                            let userString = document.getElementById('userString').value;
                         
-                            Swal.fire(
-                                {
-                                    backdrop: false,
-                                    title: 'Squawkey',
-                                    text: msg
-                                }
-                            );
+                            let reversedString = reverseAString(userString);
+                        
+                            displayString(reversedString);
+                        }
+
+                        
+                        // Logic Function
+                        <a href="#rasSection" class="text-decoration-none" id="rasCode">function reverseAString(userString)</a>
+                        {
+                            // Reverse the string
+                            let reversedString = '';
+
+                            for (i = userString.length - 1; i >= 0; i--)
+                            {
+                                reversedString += userString[i];
+                            }
+
+                            return reversedString;
+                        }
+
+
+
+
+                        // View Function
+                        <a href="#displayStringSection" class="text-decoration-none" id="displayStringCode">function displayString(reversedString)</a>
+                        {
+                            document.getElementById('results').textContent = reversedString;
+                            document.getElementById('alert').classList.remove('invisible');
                         }
                     </code>
                 </pre>
@@ -91,9 +114,180 @@
             </div>
             <!-- Code Description -->
             <div class="col col-12 col-md-4">
-                <p>The code is structured in one function.</p>
-                <h4><code>displayMessage()</code></h4>
-                <p>This functions displays a message in a Sweet Alert.</p>
+                <p>
+                    The code is structured in three functions. Called functions will be detailed in their own sections.
+                    Click a <code class="language-js">headline()</code> to scroll to that section of the code. And click
+                    the
+                    function name within the code to scroll to that write up section.
+                </p>
+
+
+                <a href="#getValuesCode" class="text-decoration-none">
+                    <p><code class="language-js fs-4 " id="getValuesSection">getValues()</code></p>
+
+                </a>
+                <hr />
+
+                <p>
+                    First we start with the Entry Point Function. A function is a section of code that accomplishes one
+                    or
+                    more tasks and may return information from that task back to us. We pass it information to complete
+                    that
+                    task in the parentheses beside its name. Entry Point just means where our code begins for this app.
+                    It
+                    is attached to a button in the HTML to start when clicked. It contains three pieces of code.
+                </p>
+
+                <p><code class=""> let inputString = document.GetElementById(‘userString’).value; </code></p>
+
+                <p>
+                    This creates a storage spot, or "<strong>variable</strong>" called <code>inputString</code> and then
+                    asks our page or "<strong>document</strong>" to give us an HTML element by its name
+                    (<code>GetElementById</code>)
+                    of <code>userString</code> . This
+                    is
+                    how we get the word or sentence or "<strong>string</strong>" from our page, which is the
+                    information
+                    (<code>.value</code>)
+                    retrieved.
+                    The information now sits in our variable ready for use.
+                </p>
+
+                <p><code class=""> let reversedString = reverseAString(inputString); </code></p>
+
+                <p>
+                    This creates a new variable called reversedString and it holds the information we get back from our
+                    <code>reverseAString function</code>. We give the function the stored information we have in
+                    <code>inputString</code> and then receive the information from its accomplished task.
+                </p>
+
+                <p><code class=""> displayString(reversedString) </code></p>
+
+                This is our last part of <code>getValues()</code> . We call upon another function,
+                <code>displayString()</code>, and give it the information stored in our reversedString
+                variable. Then,
+                this function accomplishes its task, which displays the reversed string onto the page for the user.
+                </p>
+                That’s how <code>getValues()</code> works. Its task is to take in information from the user, deliver it,
+                and ask other functions to accomplish their task. Let’s talk a little bit more about those other
+                functions.
+                </p>
+                <br>
+
+
+                <a href="#rasCode" class="text-decoration-none"><code class="language-js fs-4"
+                        id="rasSection">reverseAString()</code></a>
+                <hr />
+
+                <p>
+                    The <code>reverseAString()</code> function has one task we need it to complete. We need this
+                    function to
+                    take the string given to us by our user and reverse it. First, we create a new variable called
+                    <code>reversedString</code>. We make this an empty box, ready for the string to be placed into it.
+                </p>
+
+                <p>
+                    Then, our task begins. It starts with a <code>for loop</code>, or a way for us to reiterate a piece
+                    of
+                    code based on information and conditions supplied to it through its parentheses. Here’s how we set
+                    it
+                    up. We create a temporary storage box called <code>i</code> that looks at how long our user’s string
+                    is
+                    (<code>userString.length</code>) and subtract one from it and it stores that number.
+                </p>
+
+
+                <p>
+                    Why do we subtract one? It seems strange, but the way that Javascript stores strings is different.
+                    Imagine the letters are like fancy chocolates in a box. When you purchase the box, the wrapper says
+                    how
+                    many there are in it. However, the box manufacturer would say it had one less space. For instance,
+                    the
+                    wrapper says twenty, you receive twenty pieces of chocolate, but the box manufacturer says there are
+                    nineteen spaces, because his count started at zero. <code>userString.length</code> is the wrapper,
+                    and
+                    Javascript’s special box for letters, is the box manufacturer. In Javascript that special box is
+                    called
+                    an array, and the way that we count the spaces in that special box is called
+                    <strong>indexing</strong>.
+                </p>
+
+                <p>
+                    Because of the way the box of letters is counted we want to count backwards from its (length – 1)
+                    until
+                    we reach 0.
+                </p>
+
+                <p>
+                    So, while the value of <code>i</code> is greater than or equal to zero, we want our code to run.
+                    After it runs, we subtract one from <code>i</code>.
+                </p>
+
+                <p>
+                    The code we want to run is<br><br> <code>reversedString += userString[i]</code><br><br> Let’s break
+                    that
+                    down.
+                    <code>reversedString</code> is our array. The <code>+=</code> means we want to take what’s currently
+                    in
+                    <code>reversedString</code> and add the value of <code>userString[i]</code> to it. The
+                    <code>[i]</code>
+                    is how we grab the specific letter from its spot in the array. Since <code>i</code> was given the
+                    value
+                    of the total length of the string minus one, it starts at the last index in the array . That means
+                    then
+                    that the first index or (index 0) of reversedString's array takes in the the last letter of
+                    <code>userString</code>. It
+                    does
+                    this for every letter until <code>i</code> equals -1; this is when it no longer sees a spot in the
+                    array.
+                </p>
+
+                <p>
+                    Having accomplished its task, <code>reverseAString()</code> gives back to us the new value of the
+                    reversedString variable.
+                </p>
+                <br>
+
+
+
+                <a href="#displayStringCode" class="text-decoration-none">
+                    <p><code class="language-js fs-4" id="displayStringSection">displayString()</code></p>
+                </a>
+                <hr>
+
+                <p>
+                    The final function necessary for our app to work is the <code>displayString()</code> function. This
+                    function's task is to display the reversed string onto the page and reveal a hidden area of the page
+                    to
+                    the user. It asks for the information of a <code>reversedString</code> when it is called. It has two
+                    parts.
+                </p><br>
+
+                <p><code> document.GetElementById('results').textContent = reversedString; </code></p>
+                <br>
+
+                <p>
+                    This asks the page to give us the HTML element by the name of 'results', asks to access its
+                    <code>.textContent</code> and then puts into it the value of the <code>reversedString</code>.
+                </p>
+                <br>
+
+                <p><code>document.GetElementById('alert').classList.Remove('invisible');</code></p>
+                <br>
+
+                <p>
+                    This is the grand finale. This piece of code asks the page for the element named alert, then asks to
+                    see
+                    its <code>.classList</code> or special categories can be used by the CSS styles. This bit of code
+                    then
+                    removes one of the classes named <code>'invisible'</code> which makes this element appear on the
+                    page,
+                    with the reversed string, for our user!
+                </p>
+                <hr>
+                <div class="text-end mb-2"><a href="#" class="text-decoration-none"><code
+                            class="language-js">returnToTop()</code></a>
+                </div>
             </div>
         </div>
 
